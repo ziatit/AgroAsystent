@@ -38,3 +38,6 @@ AgroAsystent to aplikacja oparta na Vue.js, która ma na celu pomoc użytkowniko
 - **Integracja z Kalendarzem**: Widok kalendarza do śledzenia działań ogrodniczych.
 - **Dziennik**: Funkcja dziennika do rejestrowania codziennych działań ogrodniczych.
 - **Udostępnianie**: Użytkownicy mogą udostępniać swoje ogrody znajomym za pomocą wiadomości, linków lub list poleconych.
+
+## Prototyp
+Prototyp ekranów mozna zobaczyć pod linkiem [Figma](https://www.figma.com/file/CLjqIpZVQNE6HO7rlZyQRf/AgroAsystent?type=design&node-id=0%3A1&mode=design&t=XMa9nnYfysvEkBJj-1)
