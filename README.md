@@ -30,14 +30,13 @@ AgroAsystent to aplikacja oparta na Vue.js, która ma na celu pomoc użytkowniko
 ### Nawigacja i Elementy Interfejsu Użytkownika
 - **Panel Sterowania**: Użytkownicy mają dostęp do panelu sterowania z skrótami do podstawowych funkcji.
 - **Listy Roślin i Ogrodów**: Wyświetla listę wszystkich roślin z miniaturami ogrodu, pozwalając użytkownikom przełączać się między wyświetlaniem wszystkich roślin a sortowaniem ich według ogrodu.
-- **Szybki Przewodnik**: Oferuje porady ogrodnicze i samouczki za pomocą osadzonych filmów na YouTube.
+- **Szybki Przewodnik**: Oferuje porady ogrodnicze i samouczki za pomocą filmów na YouTube.
 - **Przycisk Dodaj Roślinę/Ogródek**: Umożliwia użytkownikom łatwe dodawanie nowych roślin lub ogrodów.
 
 ### Dodatkowe Funkcje
-- **Ogrodnicze na podstawie Lokalizacji**: Użytkownicy mogą określić lokalizację każdego ogrodu.
 - **Integracja z Kalendarzem**: Widok kalendarza do śledzenia działań ogrodniczych.
 - **Dziennik**: Funkcja dziennika do rejestrowania codziennych działań ogrodniczych.
-- **Udostępnianie**: Użytkownicy mogą udostępniać swoje ogrody znajomym za pomocą wiadomości, linków lub list poleconych.
+- **Udostępnianie**: Użytkownicy mogą udostępniać swoje ogrody znajomym za pomocą wiadomości, linków, etc.
 
 ## Prototyp
 Prototyp ekranów mozna zobaczyć pod linkiem [Figma](https://www.figma.com/file/CLjqIpZVQNE6HO7rlZyQRf/AgroAsystent?type=design&node-id=0%3A1&mode=design&t=XMa9nnYfysvEkBJj-1)
