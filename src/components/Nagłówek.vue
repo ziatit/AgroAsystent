@@ -2,30 +2,29 @@
     <header class="header">
         <h1 class="header__title">{{ title }}</h1>
         <nav class="header__nav">
-            <!-- Dodaj tutaj linki do innych sekcji aplikacji -->
+            <router-link class="header_nav a" :to="{ name: 'MainPage' }">Home</router-link>
         </nav>
     </header>
 </template>
 
-<script>
-export default {
-    name: 'Nagłówek',
-    props: {
-        title: {
-            type: String,
-            required: true
-        }
+
+<script setup>
+const props = defineProps({
+    title: {
+        type: String,
+        required: true
     }
-}
+})
 </script>
+
 
 <style scoped>
 .header {
     background-color: rgb(33, 168, 33);
     padding: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     width: 100%; 
     position: fixed;
     top: 0;
@@ -35,16 +34,19 @@ export default {
 
 .header__title {
     font-size: 24px;
-    margin: 0;
+    margin: 10;
 }
 
 .header__nav {
     display: flex;
+    margin: 0;
+    justify-content: flex-start;
 }
 
 .header__nav a {
     margin-right: 10px;
     text-decoration: none;
     color: #333;
+    margin-left: 0;;
 }
 </style>
