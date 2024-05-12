@@ -14,11 +14,29 @@
 <script setup>
 import { ref } from 'vue';
 
-const username = ref('');
-const password = ref('');
+const submitForm = async (event) => {
+    console.log('Username:', username.value);
+    console.log('Password:', password.value);
 
-const submitForm = (event) => {
-    event.preventDefault();
-    // Perform registration logic here
+    try {
+        const response = await fetch('http://localhost:3000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username.value,
+                password: password.value
+            })
+        });
+
+        if (response.ok) {
+            console.log('Registration successful');
+        } else {
+            console.log('Registration failed');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
 };
 </script>

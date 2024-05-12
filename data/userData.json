@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "username": "user1",
+      "password": "a",
+      "gardens": [
+        {
+          "gardenName": "My First Garden",
+          "plants": [
+            "Rose",
+            "Tulip",
+            "Daisy"
+          ]
+        },
+        {
+          "gardenName": "My Second Garden",
+          "plants": [
+            "Oak",
+            "Pine",
+            "Maple"
+          ]
+        }
+      ],
+      "id": "f2dd"
+    },
+    {
+      "username": "user2",
+      "password": "hashedPassword2",
+      "gardens": [
+        {
+          "gardenName": "My Green Garden",
+          "plants": [
+            "Cactus",
+            "Lily",
+            "Orchid"
+          ]
+        }
+      ],
+      "id": "47ee"
+}
+]
+}
