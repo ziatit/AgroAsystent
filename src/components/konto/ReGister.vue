@@ -19,7 +19,7 @@ const submitForm = async (event) => {
     console.log('Password:', password.value);
 
     try {
-        const response = await fetch('http://localhost:3000/users', {
+        const response = await fetch('http://localhost:3000/users/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

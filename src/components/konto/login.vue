@@ -14,12 +14,15 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
+import { SET_USERNAME } from "../../store/storeconstants.js";
+import { useStore } from 'vuex';
 
 
 const router = useRouter();
 const username = ref('');
 const password = ref('');
 const userExists = ref(null);
+const store = useStore();
 
 
 const login = async () => {
@@ -36,6 +39,7 @@ const login = async () => {
         if (userExists) {
             console.log(username.value, 'exists!');
             router.push({ name: 'UserScreen' });
+            store.commit(`auth/${SET_USERNAME}`, username.value);
         } else {
             // User does not exist, display error message
             userExists.value = false;
