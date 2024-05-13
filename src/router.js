@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import mainPage from "./views/mainPage.vue";
 import UserScreen from "./views/userScreen.vue";
+import ogrody from "./views/gardensPage.vue";
 
 const routes = [
     {
@@ -12,6 +13,11 @@ const routes = [
         path: '/UserScreen',
         name: 'UserScreen',
         component: UserScreen
+    },
+    {
+        path: '/ogrody',
+        name: 'Ogrody',
+        component: ogrody
     }
 ];
 

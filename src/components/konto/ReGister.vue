@@ -13,8 +13,14 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+let username = ref('');
+let password = ref(''); 
+const router = useRouter();
 
 const submitForm = async (event) => {
+    event.preventDefault()
     console.log('Username:', username.value);
     console.log('Password:', password.value);
 
@@ -26,12 +32,16 @@ const submitForm = async (event) => {
             },
             body: JSON.stringify({
                 username: username.value,
-                password: password.value
+                password: password.value,
+                id: username.value+'id',
+                gardenName: '',
+                gardens: []
             })
         });
 
         if (response.ok) {
             console.log('Registration successful');
+            router.push({ name: 'MainPage' });
         } else {
             console.log('Registration failed');
         }
