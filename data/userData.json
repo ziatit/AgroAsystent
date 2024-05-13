@@ -10,33 +10,96 @@
             "Rose",
             "Tulip",
             "Daisy"
-          ]
+          ],
+          "isUnderRoof": false,
+          "location": "Some location"
         },
         {
-          "gardenName": "My Second Garden",
-          "plants": [
-            "Oak",
-            "Pine",
-            "Maple"
-          ]
+          "gardenName": "a",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "a"
         }
       ],
       "id": "user1id"
     },
     {
       "username": "user2",
-      "password": "hashedPassword2",
+      "password": "b",
       "gardens": [
         {
-          "gardenName": "My Green Garden",
+          "gardenName": "My Second Garden",
           "plants": [
-            "Cactus",
-            "Lily",
-            "Orchid"
-          ]
+            "Rose",
+            "Tulip",
+            "Daisy"
+          ],
+          "isUnderRoof": false,
+          "location": "Some location"
+        },
+        {
+          "gardenName": "My Third Garden",
+          "plants": [
+            "Rose",
+            "Tulip",
+            "Daisy"
+          ],
+          "isUnderRoof": false,
+          "location": "Some location"
         }
       ],
       "id": "user2id"
-}
-]
+    },
+    {
+      "username": "user3",
+      "password": "c",
+      "gardens": [
+        {
+          "gardenName": "My Fourth Garden",
+          "plants": [
+            "Rose",
+            "Tulip",
+            "Daisy"
+          ],
+          "isUnderRoof": false,
+          "location": "Some location"
+        },
+        {
+          "gardenName": "My Fifth Garden",
+          "plants": [
+            "Rose",
+            "Tulip",
+            "Daisy"
+          ],
+          "isUnderRoof": false,
+          "location": "Some location"
+        },
+        {
+          "gardenName": "My Sixth Garden",
+          "plants": [
+            "Rose",
+            "Tulip",
+            "Daisy"
+          ],
+          "isUnderRoof": false,
+          "location": "Some location"
+        }
+      ],
+      "id": "user3id"
+    },
+    {
+      "id": "eweid",
+      "username": "ewe",
+      "password": "lina",
+      "gardenName": "",
+      "gardens": [
+        {
+          "gardenName": "a",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "a"
+        }
+      ]
+    }
+  ]
 }
