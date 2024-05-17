@@ -1,6 +1,7 @@
 <template>
 <naglowek title="Agroasystent" />
 <router-view />
+
 <st00pka />
 </template>
 
