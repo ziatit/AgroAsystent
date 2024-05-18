@@ -19,6 +19,48 @@
           "plants": [],
           "isUnderRoof": true,
           "location": "a"
+        },
+        {
+          "gardenName": "a",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "a"
+        },
+        {
+          "gardenName": "a",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "a"
+        },
+        {
+          "gardenName": "San Andreas",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "San Andreas"
+        },
+        {
+          "gardenName": "San Andreas",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "San Andreas"
+        },
+        {
+          "gardenName": "San Andreas",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "San Andreas"
+        },
+        {
+          "gardenName": "San Andreas",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "San Andreas"
+        },
+        {
+          "gardenName": "a",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "a"
         }
       ],
       "id": "user1id"
@@ -98,6 +140,20 @@
           "plants": [],
           "isUnderRoof": true,
           "location": "a"
+        }
+      ]
+    },
+    {
+      "id": "ziatitid",
+      "username": "ziatit",
+      "password": "aaa",
+      "gardenName": "",
+      "gardens": [
+        {
+          "gardenName": "Ogród1",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "Kraków"
         }
       ]
     }
