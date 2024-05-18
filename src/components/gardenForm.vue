@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed} from 'vue';
 import { GET_USERNAME } from "../store/storeconstants";
 import { useStore } from 'vuex';
 
@@ -30,16 +30,16 @@ const title = 'Stwórz nowy ogródek';
 const name = ref('');
 const location = ref('');
 const isUnderRoof = ref(false);
+const emit = defineEmits(['formSubmitted']);
 
 const submitForm = () => {
     console.log(`Name: ${name.value}, Location: ${location.value}, Is Under Roof: ${isUnderRoof.value}`);
     const gardenData = {
         gardenName: name.value,
-        plants: [], // You might want to allow the user to specify this
+        plants: [],
         isUnderRoof: isUnderRoof.value,
         location: location.value
     };
-
     fetch(`http://localhost:3000/users/${username.value}id`, {
         method: 'GET',
     })
@@ -62,7 +62,11 @@ const submitForm = () => {
     .catch(error => {
         console.error('Error creating garden:', error);
         // Handle error
-    });
+    })
+    .then(() => {
+        // Emit the formSubmitted event
+        emit('formSubmitted');
+});
 };
 </script>
 

@@ -2,15 +2,14 @@
     <div class="container">
         <h2 class="greeting">Hello, {{ username }}</h2>
         <div class="content">
-            <router-link to="/ogrody" class="garden-link">Go to Gardens</router-link>
-            <div class="task-list">
-                <p> Wstawić kalendarz</p>
-                <p> Wstawić zadania</p>
-                <button class="create" @click="showcreateForm" >Dodaj Ogród</button>
-            </div>
-            <gardenForm v-if ="showCreate"/>
-        </div>
-        <div class="spacer"></div>
+        </div> 
+    </div>
+    <router-link to="/ogrody" class="garden-link">Go to Gardens</router-link>
+    <div class="task-list">
+        <p> Wstawić kalendarz</p>
+        <p> Wstawić zadania</p>
+        <button class="create" @click="showcreateForm" >Dodaj Ogród</button>
+        <gardenForm v-if="showCreate" class="overlay" @formSubmitted="hideForm" />
     </div>
 </template>
 
@@ -25,8 +24,11 @@ const showCreate = ref(false);
 
 const username = computed(() => store.getters[`auth/${GET_USERNAME}`]);
 function showcreateForm() {
-        showCreate.value = !showCreate.value;
-        console.log(showCreate.value);
+    showCreate.value = true;
+};
+
+function hideForm() {
+    showCreate.value = false;
 };
 </script>
 
@@ -43,13 +45,26 @@ body {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .greeting {
     text-align: center;
-    color: #666;
 }
 
+.overlay {
+    position: fixed; /* Change from absolute to fixed */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for element's own dimensions */
+    width: 80%; /* Adjust to desired width */
+    height: 80%; /* Adjust to desired height */
+    background-color: #fff; /* Change to non-transparent color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 .content {
         flex: 2;
         margin-top: 100px;
@@ -71,6 +86,12 @@ body {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .task-list p {
