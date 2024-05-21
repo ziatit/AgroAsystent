@@ -11,13 +11,12 @@
 <script setup>
 import gardenForm from '../components/gardenForm.vue';
 import { ref, computed } from 'vue';
-import { GET_USERNAME } from "../store/storeconstants";
-import { useStore } from 'vuex';
+import { useUserStore } from '../store/users';
 
-const store = useStore();
+const userStore = useUserStore();
 const showCreate = ref(false);
 
-const username = computed(() => store.getters[`auth/${GET_USERNAME}`]);
+const username = computed(() => userStore.getLoggedInUser);
 function showcreateForm() {
     showCreate.value = true;
 };

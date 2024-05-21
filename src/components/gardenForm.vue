@@ -21,11 +21,10 @@
 
 <script setup>
 import { ref, computed} from 'vue';
-import { GET_USERNAME } from "../store/storeconstants";
-import { useStore } from 'vuex';
+import { useUserStore} from '../store/users';
 
-const username = computed(() => store.getters[`auth/${GET_USERNAME}`]);
-const store = useStore();
+const userStore = useUserStore();
+const username = computed(() => userStore.getLoggedInUser);
 const title = 'Stwórz nowy ogródek';
 const name = ref('');
 const location = ref('');

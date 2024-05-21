@@ -61,6 +61,12 @@
           "plants": [],
           "isUnderRoof": true,
           "location": "a"
+        },
+        {
+          "gardenName": "pinia",
+          "plants": [],
+          "isUnderRoof": false,
+          "location": "a"
         }
       ],
       "id": "user1id"
