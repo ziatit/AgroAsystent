@@ -2,7 +2,7 @@
     <header class="header">
         <h1 class="header__title">{{ title }}</h1>
         <nav class="header__nav">
-            <router-link class="header_nav a" :to="{ name: 'MainPage' }">Home</router-link>
+            <router-link class="header_nav a" :to="{ name: 'MainPage' }">Logout</router-link>
         </nav>
     </header>
 </template>

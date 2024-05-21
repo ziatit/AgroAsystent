@@ -61,6 +61,12 @@
           "plants": [],
           "isUnderRoof": true,
           "location": "a"
+        },
+        {
+          "gardenName": "pinia",
+          "plants": [],
+          "isUnderRoof": false,
+          "location": "a"
         }
       ],
       "id": "user1id"
@@ -88,6 +94,12 @@
           ],
           "isUnderRoof": false,
           "location": "Some location"
+        },
+        {
+          "gardenName": "Ogród UEK",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "Kraków"
         }
       ],
       "id": "user2id"

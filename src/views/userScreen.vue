@@ -1,28 +1,22 @@
 <template>
-    <div class="container">
-        <h2 class="greeting">Hello, {{ username }}</h2>
-        <div class="content">
-        </div> 
-    </div>
-    <router-link to="/ogrody" class="garden-link">Go to Gardens</router-link>
+    <h2 class="greeting">Hello, {{ username }}</h2>
+    <router-link to="/ogrody" class="garden-link">Twoje Ogrody</router-link>
     <div class="task-list">
-        <p> Wstawić kalendarz</p>
-        <p> Wstawić zadania</p>
         <button class="create" @click="showcreateForm" >Dodaj Ogród</button>
         <gardenForm v-if="showCreate" class="overlay" @formSubmitted="hideForm" />
+        <p> Kalendarz</p>
     </div>
 </template>
 
 <script setup>
 import gardenForm from '../components/gardenForm.vue';
 import { ref, computed } from 'vue';
-import { GET_USERNAME } from "../store/storeconstants";
-import { useStore } from 'vuex';
+import { useUserStore } from '../store/users';
 
-const store = useStore();
+const userStore = useUserStore();
 const showCreate = ref(false);
 
-const username = computed(() => store.getters[`auth/${GET_USERNAME}`]);
+const username = computed(() => userStore.getLoggedInUser);
 function showcreateForm() {
     showCreate.value = true;
 };

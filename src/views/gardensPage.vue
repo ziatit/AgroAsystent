@@ -9,16 +9,16 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import {  GET_USERNAME } from "../store/storeconstants";
-import { useStore } from 'vuex';
+import { useUserStore } from '../store/users.js';
 
-const store = useStore();
 const gardens = ref('');
-const username = computed(() => store.getters[`auth/${GET_USERNAME}`]);
+const userStore = useUserStore();
+const username = ref(userStore.getLoggedInUser);
 onMounted(fetchGardens);
 
 async function fetchGardens() {
     try {
+        console.log(username.value)
         const response = await fetch(`http://localhost:3000/users/` + username.value+'id' );
         const data = await response.json();
 
