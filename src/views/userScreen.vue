@@ -1,15 +1,10 @@
 <template>
-    <div class="container">
-        <h2 class="greeting">Hello, {{ username }}</h2>
-        <div class="content">
-        </div> 
-    </div>
-    <router-link to="/ogrody" class="garden-link">Go to Gardens</router-link>
+    <h2 class="greeting">Hello, {{ username }}</h2>
+    <router-link to="/ogrody" class="garden-link">Twoje Ogrody</router-link>
     <div class="task-list">
-        <p> Wstawić kalendarz</p>
-        <p> Wstawić zadania</p>
         <button class="create" @click="showcreateForm" >Dodaj Ogród</button>
         <gardenForm v-if="showCreate" class="overlay" @formSubmitted="hideForm" />
+        <p> Kalendarz</p>
     </div>
 </template>
 
