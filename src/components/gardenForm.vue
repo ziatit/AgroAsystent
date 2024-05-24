@@ -29,6 +29,7 @@ const title = 'Stwórz nowy ogródek';
 const name = ref('');
 const location = ref('');
 const isUnderRoof = ref(false);
+const gardenID = ref('id')
 const emit = defineEmits(['formSubmitted']);
 
 const submitForm = () => {
@@ -37,7 +38,8 @@ const submitForm = () => {
         gardenName: name.value,
         plants: [],
         isUnderRoof: isUnderRoof.value,
-        location: location.value
+        location: location.value,
+        id: gardenID.value+name.value
     };
     fetch(`http://localhost:3000/users/${username.value}id`, {
         method: 'GET',

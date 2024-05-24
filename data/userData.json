@@ -5,68 +5,18 @@
       "password": "a",
       "gardens": [
         {
-          "gardenName": "My First Garden",
-          "plants": [
-            "Rose",
-            "Tulip",
-            "Daisy"
-          ],
-          "isUnderRoof": false,
-          "location": "Some location"
-        },
-        {
-          "gardenName": "a",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "a"
-        },
-        {
-          "gardenName": "a",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "a"
-        },
-        {
-          "gardenName": "a",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "a"
-        },
-        {
-          "gardenName": "San Andreas",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "San Andreas"
-        },
-        {
-          "gardenName": "San Andreas",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "San Andreas"
-        },
-        {
-          "gardenName": "San Andreas",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "San Andreas"
-        },
-        {
-          "gardenName": "San Andreas",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "San Andreas"
-        },
-        {
-          "gardenName": "a",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "a"
-        },
-        {
-          "gardenName": "pinia",
+          "gardenName": "Ogród1",
           "plants": [],
           "isUnderRoof": false,
-          "location": "a"
+          "location": "Kraków",
+          "id": "idOgród1"
+        },
+        {
+          "gardenName": "test2137",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "warszawa",
+          "id": "idtest2137"
         }
       ],
       "id": "user1id"

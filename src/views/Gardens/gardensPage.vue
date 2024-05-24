@@ -2,14 +2,18 @@
     <div class="container">
         <h1>Hej {{ username }}. Tu są twoje ogrody:</h1>
         <ul class="garden-list">
-            <li v-for="garden in gardens" :key="garden" class="garden-item">{{ garden }}</li>
+            <li v-for="garden in gardens" :key="garden" class="garden-item">
+                <router-link :to="{ name: 'GardenDetail', params: { id: garden }}" class="garden-link">
+                    <h2 class="garden-name">{{ garden }}</h2>
+                </router-link>
+            </li>
         </ul>
     </div>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import { useUserStore } from '../store/users.js';
+import { useUserStore } from '../../store/users.js';
 
 const gardens = ref('');
 const userStore = useUserStore();
