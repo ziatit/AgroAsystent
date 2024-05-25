@@ -2,7 +2,10 @@
     <div class="container">
         <h1>Hej {{ username }}. Tu są twoje ogrody:</h1>
         <ul class="garden-list">
-            <li v-for="garden in gardens" :key="garden" class="garden-item">{{ garden }}</li>
+            <li v-for="garden in gardens" :key="garden" class="garden-item">
+                <router-link :to="'/garden/' + garden">{{ garden }}</router-link>
+                {{ garden }}
+            </li>
         </ul>
     </div>
 </template>
@@ -13,7 +16,7 @@ import {  GET_USERNAME } from "../store/storeconstants";
 import { useStore } from 'vuex';
 
 const store = useStore();
-const gardens = ref('');
+const gardens = ref([]);
 const username = computed(() => store.getters[`auth/${GET_USERNAME}`]);
 onMounted(fetchGardens);
 
@@ -48,6 +51,8 @@ async function fetchGardens() {
 
 .garden-item {
     background-color: #f9f9f9;
+    color: black;
+    font-family: Arial, sans-serif;
     border: 1px solid #ddd;
     padding: 10px;
     margin-bottom: 10px;

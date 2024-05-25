@@ -7,9 +7,8 @@
         {
           "gardenName": "My First Garden",
           "plants": [
-            "Rose",
-            "Tulip",
-            "Daisy"
+            { "name": "Róża" },
+            { "name": "Tulipan" }
           ],
           "isUnderRoof": false,
           "location": "Some location"
@@ -19,6 +18,12 @@
           "plants": [],
           "isUnderRoof": true,
           "location": "a"
+        },
+        {
+          "gardenName": "jojczenie",
+          "plants": [],
+          "isUnderRoof": true,
+          "location": "Chrząszczyrzegoszyce"
         }
       ],
       "id": "user1id"
@@ -100,6 +105,27 @@
           "location": "a"
         }
       ]
+    },
+    {
+      "id": "dupaid",
+      "username": "dupa",
+      "password": "dupa1",
+      "gardenName": "",
+      "gardens": []
+    },
+    {
+      "id": "dupaid",
+      "username": "dupa",
+      "password": "dupa1",
+      "gardenName": "",
+      "gardens": []
+    },
+    {
+      "id": "dupaid",
+      "username": "dupa",
+      "password": "dupa1",
+      "gardenName": "",
+      "gardens": []
     }
   ]
 }
