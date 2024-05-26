@@ -24,7 +24,7 @@ const props = defineProps({
 
 onMounted(async () => {
     try {
-        const response = await fetch('http://localhost:3000/users/user1id');
+        const response = await fetch('http://localhost:3000/users/' + username.value + 'id');
         const user = await response.json();
         const fetchedGarden = user.gardens.find(g => g.gardenName === props.id);
         garden.value = fetchedGarden;

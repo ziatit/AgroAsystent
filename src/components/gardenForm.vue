@@ -80,6 +80,13 @@ const submitForm = () => {
 }
 
 .form-group {
-    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+.form-group:focus{
+    border-color: #007BFF;
+    box-shadow: 0 0 5px #007BFF;
 }
 </style>

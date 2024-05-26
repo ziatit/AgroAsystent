@@ -50,6 +50,13 @@
           "plants": [],
           "isUnderRoof": true,
           "location": "Kraków"
+        },
+        {
+          "gardenName": "haz",
+          "plants": [],
+          "isUnderRoof": false,
+          "location": "ybyrd",
+          "id": "idhaz"
         }
       ],
       "id": "user2id"

@@ -3,6 +3,8 @@ import mainPage from "./views/mainPage.vue";
 import UserScreen from "./views/userScreen.vue";
 import ogrody from "./views/Gardens/gardensPage.vue";
 import gardenDetail from "./views/Gardens/gardenDetail.vue";
+import NotFound from "./views/NotFound.vue";
+import AboutUs from "./views/ONas.vue";
 
 const routes = [
     {
@@ -26,6 +28,16 @@ const routes = [
         component: gardenDetail,
         props: true
 
+    },
+    {
+        path: '/:catchAll(.*)',
+        name: 'NotFound',
+        component: NotFound
+    },
+    {
+        path:'/aboutUs',
+        name: 'AboutUs',
+        component: AboutUs
     }
 ];
 
