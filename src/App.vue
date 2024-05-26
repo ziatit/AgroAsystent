@@ -1,12 +1,5 @@
 <template>
 <naglowek title="Agroasystent" />
-<div id="app">
-    <h1>AgroAsystent</h1>
-    <Weather />
-    <AddPlant @add-plant="addPlant" />
-    <Garden :plants="plants" />
-  </div>
-
 <router-view />
 
 <st00pka />
