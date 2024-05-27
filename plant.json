@@ -1,0 +1,11 @@
+{
+    "plants": [
+      { "id": 1, "name": "Tomato", "type": "Vegetable", "watering": "Medium", "fertilizer": "Monthly", "plantingDate": "2024-04-15" },
+      { "id": 2, "name": "Rose", "type": "Flower", "watering": "High", "fertilizer": "Bi-weekly", "plantingDate": "2024-03-20" }
+    ],
+    "wateringLogs": {
+      "1": [],
+      "2": []
+    }
+  }
+  

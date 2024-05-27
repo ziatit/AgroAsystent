@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 import mainPage from "./views/mainPage.vue";
 import UserScreen from "./views/userScreen.vue";
+import ogrody from "./views/gardensPage.vue";
+import AddPlant from './views/AddPlant.vue';
+import Garden from './views/Garden.vue';
+
+import AddPlant from "./views/AddPlant.vue";
 import ogrody from "./views/Gardens/gardensPage.vue";
 import gardenDetail from "./views/Gardens/gardenDetail.vue";
 import NotFound from "./views/NotFound.vue";
@@ -23,6 +28,12 @@ const routes = [
         component: ogrody
     },
     {
+
+        path: '/AddPlant',
+        name: 'AddPlant',
+        component: AddPlant
+    },
+     {
         path: '/garden/:id',
         name: 'GardenDetail',
         component: gardenDetail,
@@ -39,6 +50,7 @@ const routes = [
         name: 'AboutUs',
         component: AboutUs
     }
+
 ];
 
 const router = createRouter({
