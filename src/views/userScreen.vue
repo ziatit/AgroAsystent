@@ -1,32 +1,28 @@
 <template>
-    <div class="container">
-        <h2 class="greeting">Hello, {{ username }}</h2>
-        <div class="content">
-            <router-link to="/ogrody" class="garden-link">Go to Gardens</router-link>
-            <div class="task-list">
-                <p> Wstawić kalendarz</p>
-                <p> Wstawić zadania</p>
-                <button class="create" @click="showcreateForm" >Dodaj Ogród</button>
-            </div>
-            <gardenForm v-if ="showCreate"/>
-        </div>
-        <div class="spacer"></div>
+    <h2 class="greeting">Hello, {{ username }}</h2>
+    <router-link to="/ogrody" class="garden-link">Twoje Ogrody</router-link>
+    <div class="task-list">
+        <button class="create" @click="showcreateForm" >Dodaj Ogród</button>
+        <gardenForm v-if="showCreate" class="overlay" @formSubmitted="hideForm" />
+        <p> Kalendarz</p>
     </div>
 </template>
 
 <script setup>
 import gardenForm from '../components/gardenForm.vue';
 import { ref, computed } from 'vue';
-import { GET_USERNAME } from "../store/storeconstants";
-import { useStore } from 'vuex';
+import { useUserStore } from '../store/users';
 
-const store = useStore();
+const userStore = useUserStore();
 const showCreate = ref(false);
 
-const username = computed(() => store.getters[`auth/${GET_USERNAME}`]);
+const username = computed(() => userStore.getLoggedInUser);
 function showcreateForm() {
-        showCreate.value = !showCreate.value;
-        console.log(showCreate.value);
+    showCreate.value = true;
+};
+
+function hideForm() {
+    showCreate.value = false;
 };
 </script>
 
@@ -43,13 +39,27 @@ body {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .greeting {
     text-align: center;
-    color: #666;
 }
 
+.overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border-radius: 10px;
+}
 .content {
         flex: 2;
         margin-top: 100px;
@@ -71,6 +81,12 @@ body {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .task-list p {

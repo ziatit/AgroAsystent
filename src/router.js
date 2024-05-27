@@ -5,6 +5,11 @@ import ogrody from "./views/gardensPage.vue";
 import AddPlant from './views/AddPlant.vue';
 import Garden from './views/Garden.vue';
 
+import AddPlant from "./views/AddPlant.vue";
+import ogrody from "./views/Gardens/gardensPage.vue";
+import gardenDetail from "./views/Gardens/gardenDetail.vue";
+import NotFound from "./views/NotFound.vue";
+import AboutUs from "./views/ONas.vue";
 
 const routes = [
     {
@@ -23,11 +28,29 @@ const routes = [
         component: ogrody
     },
     {
+
         path: '/AddPlant',
         name: 'AddPlant',
         component: AddPlant
     },
-    { path: '/garden/:name', component: Garden, props: true }
+     {
+        path: '/garden/:id',
+        name: 'GardenDetail',
+        component: gardenDetail,
+        props: true
+
+    },
+    {
+        path: '/:catchAll(.*)',
+        name: 'NotFound',
+        component: NotFound
+    },
+    {
+        path:'/aboutUs',
+        name: 'AboutUs',
+        component: AboutUs
+    }
+
 ];
 
 const router = createRouter({

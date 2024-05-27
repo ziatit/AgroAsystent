@@ -3,8 +3,9 @@
         <h1>Hej {{ username }}. Tu są twoje ogrody:</h1>
         <ul class="garden-list">
             <li v-for="garden in gardens" :key="garden" class="garden-item">
-                <router-link :to="'/garden/' + garden">{{ garden }}</router-link>
-                {{ garden }}
+                <router-link :to="{ name: 'GardenDetail', params: { id: garden }}" class="garden-link">
+                    <h2 class="garden-name">{{ garden }}</h2>
+                </router-link>
             </li>
         </ul>
     </div>
@@ -12,16 +13,16 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import {  GET_USERNAME } from "../store/storeconstants";
-import { useStore } from 'vuex';
+import { useUserStore } from '../../store/users.js';
 
-const store = useStore();
-const gardens = ref([]);
-const username = computed(() => store.getters[`auth/${GET_USERNAME}`]);
+const gardens = ref('');
+const userStore = useUserStore();
+const username = ref(userStore.getLoggedInUser);
 onMounted(fetchGardens);
 
 async function fetchGardens() {
     try {
+        console.log(username.value)
         const response = await fetch(`http://localhost:3000/users/` + username.value+'id' );
         const data = await response.json();
 
@@ -51,8 +52,6 @@ async function fetchGardens() {
 
 .garden-item {
     background-color: #f9f9f9;
-    color: black;
-    font-family: Arial, sans-serif;
     border: 1px solid #ddd;
     padding: 10px;
     margin-bottom: 10px;

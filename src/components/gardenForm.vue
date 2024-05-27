@@ -20,26 +20,27 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { GET_USERNAME } from "../store/storeconstants";
-import { useStore } from 'vuex';
+import { ref, computed} from 'vue';
+import { useUserStore} from '../store/users';
 
-const username = computed(() => store.getters[`auth/${GET_USERNAME}`]);
-const store = useStore();
+const userStore = useUserStore();
+const username = computed(() => userStore.getLoggedInUser);
 const title = 'Stwórz nowy ogródek';
 const name = ref('');
 const location = ref('');
 const isUnderRoof = ref(false);
+const gardenID = ref('id')
+const emit = defineEmits(['formSubmitted']);
 
 const submitForm = () => {
     console.log(`Name: ${name.value}, Location: ${location.value}, Is Under Roof: ${isUnderRoof.value}`);
     const gardenData = {
         gardenName: name.value,
-        plants: [], // You might want to allow the user to specify this
+        plants: [],
         isUnderRoof: isUnderRoof.value,
-        location: location.value
+        location: location.value,
+        id: gardenID.value+name.value
     };
-
     fetch(`http://localhost:3000/users/${username.value}id`, {
         method: 'GET',
     })
@@ -62,7 +63,11 @@ const submitForm = () => {
     .catch(error => {
         console.error('Error creating garden:', error);
         // Handle error
-    });
+    })
+    .then(() => {
+        // Emit the formSubmitted event
+        emit('formSubmitted');
+});
 };
 </script>
 
@@ -75,6 +80,13 @@ const submitForm = () => {
 }
 
 .form-group {
-    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+.form-group:focus{
+    border-color: #007BFF;
+    box-shadow: 0 0 5px #007BFF;
 }
 </style>
