@@ -11,7 +11,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import AddPlant from './AddPlant.vue';
+import AddPlant from '../components/AddPlant.vue';
 
 const route = useRoute();
 const name = route.params.name;

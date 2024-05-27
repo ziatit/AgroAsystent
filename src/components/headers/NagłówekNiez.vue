@@ -1,8 +1,9 @@
 <template>
     <header class="header">
         <h1 class="header__title">Agroasystent</h1>
-        <nav>
-            <router-link to="/aboutUs">About Us</router-link>
+        <nav class="header__nav">
+            <router-link class="header_nav a" to="/">Login</router-link>
+            <router-link class="header_nav b" to="/aboutUs">About Us</router-link>
         </nav>
     </header>
 </template>
@@ -29,4 +30,23 @@
     font-size: 24px;
     margin: 10;
 }
+
+.header__nav {
+    display: flex;
+    margin: 0;
+    justify-content: flex-start;
+}
+
+.header__nav a {
+    color: rgb(99, 93, 93); 
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.header__nav b {
+    color: rgb(99, 93, 93); 
+    text-decoration: none;
+
+}
+
 </style>

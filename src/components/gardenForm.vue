@@ -24,7 +24,7 @@ import { ref, computed} from 'vue';
 import { useUserStore} from '../store/users';
 
 const userStore = useUserStore();
-const username = computed(() => userStore.getLoggedInUser);
+const username = ref(userStore.getLoggedInUser);
 const title = 'Stwórz nowy ogródek';
 const name = ref('');
 const location = ref('');

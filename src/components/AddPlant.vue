@@ -23,3 +23,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+</style>

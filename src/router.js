@@ -1,12 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import mainPage from "./views/mainPage.vue";
 import UserScreen from "./views/userScreen.vue";
-import ogrody from "./views/gardensPage.vue";
-import AddPlant from './views/AddPlant.vue';
+import ogrody from "./views/Gardens/gardensPage.vue";
+import AddPlant from './components/AddPlant.vue';
 import Garden from './views/Garden.vue';
 
-import AddPlant from "./views/AddPlant.vue";
-import ogrody from "./views/Gardens/gardensPage.vue";
 import gardenDetail from "./views/Gardens/gardenDetail.vue";
 import NotFound from "./views/NotFound.vue";
 import AboutUs from "./views/ONas.vue";

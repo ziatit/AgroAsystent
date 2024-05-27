@@ -18,7 +18,7 @@ import { useUserStore } from '../../store/users.js';
 const gardens = ref('');
 const userStore = useUserStore();
 const username = ref(userStore.getLoggedInUser);
-onMounted(fetchGardens);
+onMounted(fetchGardens)
 
 async function fetchGardens() {
     try {
