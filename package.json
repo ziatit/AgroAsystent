@@ -9,13 +9,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.43.4",
+    "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
     "json-server": "^1.0.0-alpha.23",
     "pinia": "^2.1.7",
+    "supabase": "^1.169.8",
     "vue": "^3.4.21",
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "AgroAsystent to aplikacja oparta na Vue.js, która ma na celu pomoc użytkownikom w efektywnym zarządzaniu ich ogrodami. Oferuje szereg funkcji, które upraszczają zadania ogrodnicze, począwszy od sadzenia i opieki nad roślinami, aż po monitorowanie warunków pogodowych i otrzymywanie przypomnień.",
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
