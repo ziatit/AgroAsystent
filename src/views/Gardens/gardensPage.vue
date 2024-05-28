@@ -2,9 +2,9 @@
     <div class="container">
         <h1>Hej {{ username }}. Tu są twoje ogrody:</h1>
         <ul class="garden-list">
-            <li v-for="garden in gardens" :key="garden" class="garden-item">
-                <router-link :to="{ name: 'GardenDetail', params: { id: garden }}" class="garden-link">
-                    <h2 class="garden-name">{{ garden }}</h2>
+            <li v-for="garden in gardens" :key="garden.name" class="garden-item">
+                <router-link :to="{ name: 'GardenDetail', params: { id: garden.name, location: garden.location }}" class="garden-link">
+                    <h2 class="garden-name">{{ garden.name }}</h2>
                 </router-link>
             </li>
         </ul>
@@ -14,8 +14,9 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useUserStore } from '../../store/users.js';
+import { supabase } from '../../supabase.js';
 
-const gardens = ref('');
+const gardens = ref([]);
 const userStore = useUserStore();
 const username = ref(userStore.getLoggedInUser);
 onMounted(fetchGardens)
@@ -23,11 +24,21 @@ onMounted(fetchGardens)
 async function fetchGardens() {
     try {
         console.log(username.value)
-        const response = await fetch(`http://localhost:3000/users/` + username.value+'id' );
-        const data = await response.json();
+        const { data, error } = await supabase
+            .from('gardens')
+            .select('garden_name, location')
+            .eq('user_name', username.value);
 
-        if (data.gardens) {
-            gardens.value = data.gardens.map(garden => garden.gardenName);
+        if (error) {
+            throw error;
+        }
+
+        if (data && data.length > 0) {
+            gardens.value = data.map(garden => {
+                console.log('Garden:', garden); // log each garden
+                return { name: garden.garden_name, location: garden.location };
+            });
+            console.log('Gardens:', gardens.value);
         } else {
             console.log('No gardens found for this user');
         }

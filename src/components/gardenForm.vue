@@ -22,6 +22,7 @@
 <script setup>
 import { ref, computed} from 'vue';
 import { useUserStore} from '../store/users';
+import { supabase } from '../supabase.js';
 
 const userStore = useUserStore();
 const username = ref(userStore.getLoggedInUser);
@@ -32,42 +33,30 @@ const isUnderRoof = ref(false);
 const gardenID = ref('id')
 const emit = defineEmits(['formSubmitted']);
 
-const submitForm = () => {
+const submitForm = async () => {
     console.log(`Name: ${name.value}, Location: ${location.value}, Is Under Roof: ${isUnderRoof.value}`);
     const gardenData = {
-        gardenName: name.value,
-        plants: [],
-        isUnderRoof: isUnderRoof.value,
+        garden_name: name.value,
+        is_under_roof: isUnderRoof.value,
         location: location.value,
-        id: gardenID.value+name.value
+        user_name: username.value
     };
-    fetch(`http://localhost:3000/users/${username.value}id`, {
-        method: 'GET',
-    })
-    .then(response => response.json())
-    .then(user => {
-        user.gardens.push(gardenData);
-        return fetch(`http://localhost:3000/users/${username.value}id`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        });
-    })
-    .then(response => response.json())
-    .then(data => {
+
+    try {
+        const { data, error } = await supabase
+            .from('gardens')
+            .upsert(gardenData);
+
+        if (error) {
+            throw error;
+        }
+
         console.log('Garden created:', data);
-        // Handle success
-    })
-    .catch(error => {
-        console.error('Error creating garden:', error);
-        // Handle error
-    })
-    .then(() => {
         // Emit the formSubmitted event
         emit('formSubmitted');
-});
+    } catch (error) {
+        console.error('Error creating garden:', error);
+    }
 };
 </script>
 

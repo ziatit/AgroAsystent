@@ -1,11 +1,20 @@
 <template>
     <div>
-        <h1>{{ props.id }}</h1>
-        <AddPlant @add-plant="addPlant" :gardenId="id" />
-        <p v-if="garden">Lokalizacja: {{ garden.location }}</p>
+        <h1>{{ gardenDets.name }}</h1>
+        <h2>Lokalizacja: {{ gardenDets.location }}</h2>
+        <button @click="showAddPlant = !showAddPlant">
+            {{ showAddPlant ? 'Zamknij formularz' : 'Dodaj roślinę' }}
+        </button>
+        <AddPlant v-if="showAddPlant" @add-plant="addPlant" :gardenId="gardenDets.name" @submitted="fetchPlants" />
+        <p>Podpowiedź: Rośliny z czerwonym tłem mogą potrzebować podlewania.</p>
         <ul class="plant-list">
-            <li v-for="plant in plants" :key="plant.name" class="plant-item">{{ plant.name }}</li>
-        </ul>
+            <li v-for="plant in plants" :key="plant.name" :class="{ 'needs-watering': needsWatering(plant.lastWatered) }" class="plant-item">
+            Nazwa: {{ plant.name }} <br>
+            Typ: {{ plant.type }} <br>
+            Ostatnie podlewanie: {{ new Date(plant.lastWatered).toLocaleDateString() }}
+        <button @click="waterPlant(plant.name)">Podlej</button>
+    </li>
+</ul>
     </div>
 </template>
 
@@ -13,32 +22,32 @@
 import { ref, onMounted, reactive } from 'vue';
 import { useUserStore } from '../../store/users.js';
 import AddPlant from '../../components/AddPlant.vue';
+import { supabase } from '../../supabase.js';
+import { useRoute } from 'vue-router';
 
+const route = useRoute(); 
 const userStore = useUserStore();
 const username = ref(userStore.getLoggedInUser);
-const garden = ref(null);
-const plants = ref({
-    name: [],
-    lastWatered: []
-});
-
-
-const props = defineProps({
-    id: {
-        type: String,
-        default: ''
-    }
-}
-)
+const plants = ref([]);
+const gardenDets = ref({ name: route.params.id, location: route.params.location });
+const showAddPlant = ref(false)
 
 async function fetchPlants() {
     try {
-        const response = await fetch('/data/userData.json');
-        const data = await response.json();
-        const garden = data.gardens.find(g => g.gardenName === props.id);
+        const { data: gardens, error } = await supabase
+            .from('plants')
+            .select('plant_name, plant_type, last_watering_date')
+            .eq('garden', gardenDets.value.name);
 
-        if (garden) {
-            plants.value = garden.plants;
+        if (error) throw error;
+
+        if (gardens && gardens.length > 0) {
+            plants.value = gardens.map(garden => ({
+                name: garden.plant_name,
+                type: garden.plant_type,
+                lastWatered: garden.last_watering_date
+            }));
+            console.log('Plants:', plants.value);
         } else {
             console.log('Garden not found');
         }
@@ -47,47 +56,74 @@ async function fetchPlants() {
     }
 }
 
-function addPlant(plant) {
-    plants.value.push(plant);
-    savePlants();
+onMounted(() => {
+    fetchPlants();
+    console.log(gardenDets.value.name, gardenDets.value.location);
+});
+
+function needsWatering(lastWatered) {
+    const lastWateredDate = new Date(lastWatered);
+    const now = new Date();
+    const differenceInDays = Math.floor((now - lastWateredDate) / (1000 * 60 * 60 * 24));
+    return differenceInDays > 3;
 }
 
-async function savePlants() {
+async function waterPlant(plantName) {
+    const today = new Date();
     try {
-        const response = await fetch('/data/userData.json');
-        const data = await response.json();
-        const garden = data.gardens.find(g => g.gardenName === name);
+        const { error } = await supabase
+            .from('plants')
+            .update({ last_watering_date: today })
+            .eq('plant_name', plantName)
+            .eq('garden', gardenDets.value.name);
 
-        if (garden) {
-            garden.plants = plants.value;
-        } else {
-            data.gardens.push({ gardenName: name, plants: plants.value });
+        if (error) throw error;
+
+        // Update the local state
+        const plant = plants.value.find(p => p.name === plantName);
+        if (plant) {
+            plant.lastWatered = today;
         }
-
-        await fetch('/data/userData.json', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
     } catch (error) {
-        console.error('Failed to save plants:', error);
+        console.error('Failed to update plant:', error);
     }
 }
 
-onMounted(fetchPlants);
+
 </script>
 <style scoped>
 .plant-list {
     list-style-type: none; /* Remove the default list bullets */
     padding: 0; /* Remove the default padding */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add some space between the items */
 }
 
 .plant-item {
     background-color: #f0f0f0; /* Set a background color */
-    margin-bottom: 10px; /* Add some space between the items */
-    padding: 10px; /* Add some padding */
-    border-radius: 5px; /* Add rounded corners */
+    padding: 20px; /* Add some padding */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add some shadow */
+    transition: transform .2s; /* Animation */
+}
+
+.plant-item:hover {
+    transform: scale(1.02); /* Slightly enlarge the item when hovered */
+}
+
+.plant-item h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.plant-item p {
+    margin: 10px 0 0;
+    color: #666;
+}
+
+.needs-watering {
+    background-color: #ffcccc;
 }
 </style>

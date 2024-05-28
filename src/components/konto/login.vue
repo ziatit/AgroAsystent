@@ -15,6 +15,7 @@
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '../../store/users.js';
+import { supabase } from '../../supabase.js';
 
 
 const router = useRouter();
@@ -25,16 +26,17 @@ const userStore = useUserStore();
 
 
 const login = async () => {
-    const apiUrl = 'http://localhost:3000/users';
-
     try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-            throw new Error('Failed to fetch data');
+        const { data: userData, error } = await supabase
+            .from('users')
+            .select('*');
+
+        if (error) {
+            throw error;
         }
-        const userData = await response.json();
+
         console.log('Users:', userData);
-        const userExists = userData.some(user => user.username === username.value && user.password === password.value);
+        const userFound = userData.some(user => user.username === username.value && user.password === password.value);
         if (userExists) {
             console.log(username.value, 'exists!');
             router.push({ name: 'UserScreen' });
@@ -47,7 +49,7 @@ const login = async () => {
         console.error('Error:', error);
         userExists.value = false;
     }
-};
+}
 
 </script>
 

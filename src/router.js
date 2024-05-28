@@ -32,7 +32,7 @@ const routes = [
         component: AddPlant
     },
      {
-        path: '/garden/:id',
+        path: '/garden/:id/:location',
         name: 'GardenDetail',
         component: gardenDetail,
         props: true
