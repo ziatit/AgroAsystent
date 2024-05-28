@@ -1,173 +1,24 @@
 {
   "users": [
+    {},
     {
+      "id": "user1id",
       "username": "user1",
       "password": "a",
-      "gardens": [
-        {
-          "gardenName": "My First Garden",
-          "plants": [
-            "Rose",
-            "Tulip",
-            "Daisy"
-          ],
-          "isUnderRoof": false,
-          "location": "Some location"
-        },
-        {
-          "gardenName": "a",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "a"
-        },
-        {
-          "gardenName": "a",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "a"
-        },
-        {
-          "gardenName": "a",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "a"
-        },
-        {
-          "gardenName": "San Andreas",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "San Andreas"
-        },
-        {
-          "gardenName": "San Andreas",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "San Andreas"
-        },
-        {
-          "gardenName": "San Andreas",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "San Andreas"
-        },
-        {
-          "gardenName": "San Andreas",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "San Andreas"
-        },
-        {
-          "gardenName": "a",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "a"
-        },
-        {
-          "gardenName": "pinia",
-          "plants": [],
-          "isUnderRoof": false,
-          "location": "a"
-        }
-      ],
-      "id": "user1id"
-    },
-    {
-      "username": "user2",
-      "password": "b",
-      "gardens": [
-        {
-          "gardenName": "My Second Garden",
-          "plants": [
-            "Rose",
-            "Tulip",
-            "Daisy"
-          ],
-          "isUnderRoof": false,
-          "location": "Some location"
-        },
-        {
-          "gardenName": "My Third Garden",
-          "plants": [
-            "Rose",
-            "Tulip",
-            "Daisy"
-          ],
-          "isUnderRoof": false,
-          "location": "Some location"
-        },
-        {
-          "gardenName": "Ogród UEK",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "Kraków"
-        }
-      ],
-      "id": "user2id"
-    },
-    {
-      "username": "user3",
-      "password": "c",
-      "gardens": [
-        {
-          "gardenName": "My Fourth Garden",
-          "plants": [
-            "Rose",
-            "Tulip",
-            "Daisy"
-          ],
-          "isUnderRoof": false,
-          "location": "Some location"
-        },
-        {
-          "gardenName": "My Fifth Garden",
-          "plants": [
-            "Rose",
-            "Tulip",
-            "Daisy"
-          ],
-          "isUnderRoof": false,
-          "location": "Some location"
-        },
-        {
-          "gardenName": "My Sixth Garden",
-          "plants": [
-            "Rose",
-            "Tulip",
-            "Daisy"
-          ],
-          "isUnderRoof": false,
-          "location": "Some location"
-        }
-      ],
-      "id": "user3id"
-    },
-    {
-      "id": "eweid",
-      "username": "ewe",
-      "password": "lina",
       "gardenName": "",
       "gardens": [
         {
           "gardenName": "a",
           "plants": [],
-          "isUnderRoof": true,
-          "location": "a"
+          "isUnderRoof": false,
+          "location": "a",
+          "id": "ida"
         }
-      ]
-    },
-    {
-      "id": "ziatitid",
-      "username": "ziatit",
-      "password": "aaa",
-      "gardenName": "",
-      "gardens": [
-        {
-          "gardenName": "Ogród1",
-          "plants": [],
-          "isUnderRoof": true,
-          "location": "Kraków"
-        }
-      ]
+      ],
+      "garden": "a",
+      "name": "a",
+      "species": "s",
+      "lastWateringDate": "2024-05-27"
     }
   ]
 }

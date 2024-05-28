@@ -22,50 +22,41 @@
 <script setup>
 import { ref, computed} from 'vue';
 import { useUserStore} from '../store/users';
+import { supabase } from '../supabase.js';
 
 const userStore = useUserStore();
-const username = computed(() => userStore.getLoggedInUser);
+const username = ref(userStore.getLoggedInUser);
 const title = 'Stwórz nowy ogródek';
 const name = ref('');
 const location = ref('');
 const isUnderRoof = ref(false);
+const gardenID = ref('id')
 const emit = defineEmits(['formSubmitted']);
 
-const submitForm = () => {
+const submitForm = async () => {
     console.log(`Name: ${name.value}, Location: ${location.value}, Is Under Roof: ${isUnderRoof.value}`);
     const gardenData = {
-        gardenName: name.value,
-        plants: [],
-        isUnderRoof: isUnderRoof.value,
-        location: location.value
+        garden_name: name.value,
+        is_under_roof: isUnderRoof.value,
+        location: location.value,
+        user_name: username.value
     };
-    fetch(`http://localhost:3000/users/${username.value}id`, {
-        method: 'GET',
-    })
-    .then(response => response.json())
-    .then(user => {
-        user.gardens.push(gardenData);
-        return fetch(`http://localhost:3000/users/${username.value}id`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        });
-    })
-    .then(response => response.json())
-    .then(data => {
+
+    try {
+        const { data, error } = await supabase
+            .from('gardens')
+            .upsert(gardenData);
+
+        if (error) {
+            throw error;
+        }
+
         console.log('Garden created:', data);
-        // Handle success
-    })
-    .catch(error => {
-        console.error('Error creating garden:', error);
-        // Handle error
-    })
-    .then(() => {
         // Emit the formSubmitted event
         emit('formSubmitted');
-});
+    } catch (error) {
+        console.error('Error creating garden:', error);
+    }
 };
 </script>
 
@@ -78,6 +69,13 @@ const submitForm = () => {
 }
 
 .form-group {
-    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+.form-group:focus{
+    border-color: #007BFF;
+    box-shadow: 0 0 5px #007BFF;
 }
 </style>

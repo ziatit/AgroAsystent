@@ -14,6 +14,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { supabase } from '../../supabase.js';
 
 let username = ref('');
 let password = ref(''); 
@@ -25,28 +26,24 @@ const submitForm = async (event) => {
     console.log('Password:', password.value);
 
     try {
-        const response = await fetch('http://localhost:3000/users/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: username.value,
-                password: password.value,
-                id: username.value+'id',
-                gardenName: '',
-                gardens: []
-            })
-        });
+        const { data, error } = await supabase
+            .from('users')
+            .insert([
+                {
+                    username: username.value,
+                    userpass: password.value,
+                }
+            ])
+            .single();
 
-        if (response.ok) {
+        if (error) {
+            console.log('Registration failed');
+        } else {
             console.log('Registration successful');
             router.push({ name: 'MainPage' });
-        } else {
-            console.log('Registration failed');
         }
     } catch (error) {
         console.error('Error:', error);
     }
-};
+}
 </script>

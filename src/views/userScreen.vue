@@ -47,17 +47,18 @@ body {
 }
 
 .overlay {
-    position: fixed; /* Change from absolute to fixed */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for element's own dimensions */
-    width: 80%; /* Adjust to desired width */
-    height: 80%; /* Adjust to desired height */
-    background-color: #fff; /* Change to non-transparent color */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    border-radius: 10px;
 }
 .content {
         flex: 2;
