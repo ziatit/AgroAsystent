@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <h2>Ogród: {{ name }}</h2>
-    <AddPlant @add-plant="addPlant" />
-    <ul>
-      <li v-for="plant in plants" :key="plant.name">{{ plant.name }}</li>
-    </ul>
-  </div>
+    <div>
+        <h2>Ogród: {{ name }}</h2>
+        <AddPlant @add-plant="addPlant" />
+        <ul>
+            <li v-for="plant in plants" :key="plant.name">{{ plant.name }}</li>
+        </ul>
+    </div>
 </template>
 
 <script setup>
@@ -64,5 +64,3 @@ async function savePlants() {
 
 onMounted(fetchPlants);
 </script>
-
-  

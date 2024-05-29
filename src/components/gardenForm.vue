@@ -14,14 +14,14 @@
                 <label for="binary">Czy ogródek jest pod dachem?</label>
                 <input type="checkbox" v-model="isUnderRoof" id="binary" name="is_under_roof">
             </div>
-            <button  type="submit">Submit</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </template>
 
 <script setup>
-import { ref, computed} from 'vue';
-import { useUserStore} from '../store/users';
+import { ref, computed } from 'vue';
+import { useUserStore } from '../store/users.js';
 import { supabase } from '../supabase.js';
 
 const userStore = useUserStore();
@@ -74,7 +74,8 @@ const submitForm = async () => {
     border: 1px solid #ccc;
     transition: all 0.3s ease;
 }
-.form-group:focus{
+
+.form-group:focus {
     border-color: #007BFF;
     box-shadow: 0 0 5px #007BFF;
 }

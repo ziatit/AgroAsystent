@@ -8,13 +8,14 @@
         <AddPlant v-if="showAddPlant" @add-plant="addPlant" :gardenId="gardenDets.name" @submitted="fetchPlants" />
         <p>Podpowiedź: Rośliny z czerwonym tłem mogą potrzebować podlewania.</p>
         <ul class="plant-list">
-            <li v-for="plant in plants" :key="plant.name" :class="{ 'needs-watering': needsWatering(plant.lastWatered) }" class="plant-item">
-            Nazwa: {{ plant.name }} <br>
-            Typ: {{ plant.type }} <br>
-            Ostatnie podlewanie: {{ new Date(plant.lastWatered).toLocaleDateString() }}
-        <button @click="waterPlant(plant.name)">Podlej</button>
-    </li>
-</ul>
+            <li v-for="plant in plants" :key="plant.name"
+                :class="{ 'needs-watering': needsWatering(plant.lastWatered) }" class="plant-item">
+                Nazwa: {{ plant.name }} <br>
+                Typ: {{ plant.type }} <br>
+                Ostatnie podlewanie: {{ new Date(plant.lastWatered).toLocaleDateString() }}
+                <button @click="waterPlant(plant.name)">Podlej</button>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -25,7 +26,7 @@ import AddPlant from '../../components/AddPlant.vue';
 import { supabase } from '../../supabase.js';
 import { useRoute } from 'vue-router';
 
-const route = useRoute(); 
+const route = useRoute();
 const userStore = useUserStore();
 const username = ref(userStore.getLoggedInUser);
 const plants = ref([]);
@@ -93,23 +94,32 @@ async function waterPlant(plantName) {
 </script>
 <style scoped>
 .plant-list {
-    list-style-type: none; /* Remove the default list bullets */
-    padding: 0; /* Remove the default padding */
+    list-style-type: none;
+    /* Remove the default list bullets */
+    padding: 0;
+    /* Remove the default padding */
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Add some space between the items */
+    gap: 20px;
+    /* Add some space between the items */
 }
 
 .plant-item {
-    background-color: #f0f0f0; /* Set a background color */
-    padding: 20px; /* Add some padding */
-    border-radius: 10px; /* Add rounded corners */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add some shadow */
-    transition: transform .2s; /* Animation */
+    background-color: #f0f0f0;
+    /* Set a background color */
+    padding: 20px;
+    /* Add some padding */
+    border-radius: 10px;
+    /* Add rounded corners */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* Add some shadow */
+    transition: transform .2s;
+    /* Animation */
 }
 
 .plant-item:hover {
-    transform: scale(1.02); /* Slightly enlarge the item when hovered */
+    transform: scale(1.02);
+    /* Slightly enlarge the item when hovered */
 }
 
 .plant-item h2 {

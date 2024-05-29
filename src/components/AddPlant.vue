@@ -1,18 +1,19 @@
 <template>
-  <div>
-    <form @submit.prevent="submitForm">
-      <label for="name">Nazwa rośliny:</label>
-      <input id="name" v-model="name" placeholder="Wprowadź nazwę rośliny" required />
+    <div>
+        <form @submit.prevent="submitForm">
+            <label for="name">Nazwa rośliny:</label>
+            <input id="name" v-model="name" placeholder="Wprowadź nazwę rośliny" required />
 
-      <label for="type">Gatunek rośliny:</label>
-      <input id="type" v-model="type" placeholder="Wprowadź gatunek rośliny" required />
+            <label for="type">Gatunek rośliny:</label>
+            <input id="type" v-model="type" placeholder="Wprowadź gatunek rośliny" required />
 
-      <label for="last_watering_date">Data ostatniego podlania:</label>
-      <input id="last_watering_date" v-model="last_watering_date" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required />
+            <label for="last_watering_date">Data ostatniego podlania:</label>
+            <input id="last_watering_date" v-model="last_watering_date" placeholder="YYYY-MM-DD"
+                pattern="\d{4}-\d{2}-\d{2}" required />
 
-      <button type="submit">Dodaj</button>
-    </form>
-  </div>
+            <button type="submit">Dodaj</button>
+        </form>
+    </div>
 </template>
 <script setup>
 import { ref, defineProps, defineEmits } from 'vue';

@@ -1,3 +1,4 @@
+<!-- src/components/headers/HeaderLoggedOut.vue -->
 <template>
     <header class="header">
         <h1 class="header__title">Agroasystent</h1>
@@ -19,11 +20,11 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    width: 100%; 
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999; 
+    z-index: 999;
 }
 
 .header__title {
@@ -38,15 +39,14 @@
 }
 
 .header__nav a {
-    color: rgb(99, 93, 93); 
+    color: rgb(99, 93, 93);
     text-decoration: none;
     margin-right: 20px;
 }
 
 .header__nav b {
-    color: rgb(99, 93, 93); 
+    color: rgb(99, 93, 93);
     text-decoration: none;
 
 }
-
 </style>

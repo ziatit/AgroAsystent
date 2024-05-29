@@ -1,15 +1,15 @@
 <template>
     <h2 class="greeting">Hello, {{ username }}</h2>
-    <router-link to="/ogrody" class="garden-link">Twoje Ogrody</router-link>
+    <router-link to="/GardensPage" class="garden-link">Twoje Ogrody</router-link>
     <div class="task-list">
-        <button class="create" @click="showcreateForm" >Dodaj Ogród</button>
-        <gardenForm v-if="showCreate" class="overlay" @formSubmitted="hideForm" />
+        <button class="create" @click="showcreateForm">Dodaj Ogród</button>
+        <GardenForm v-if="showCreate" class="overlay" @formSubmitted="hideForm" />
         <p> Kalendarz</p>
     </div>
 </template>
 
 <script setup>
-import gardenForm from '../components/gardenForm.vue';
+import GardenForm from '../components/GardenForm.vue';
 import { ref, computed } from 'vue';
 import { useUserStore } from '../store/users';
 
@@ -60,14 +60,15 @@ body {
     z-index: 1000;
     border-radius: 10px;
 }
+
 .content {
-        flex: 2;
-        margin-top: 100px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+    flex: 2;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .spacer {
     flex: 1;

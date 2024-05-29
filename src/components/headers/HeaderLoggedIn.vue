@@ -1,3 +1,4 @@
+<!-- src/components/headers/HeaderLoggedIn.vue -->
 <template>
     <header class="header">
         <h1 class="header__title">{{ title }}</h1>
@@ -25,11 +26,11 @@ const props = defineProps({
     display: flex;
     flex-direction: column;
     align-items: start;
-    width: 100%; 
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999; 
+    z-index: 999;
 }
 
 .header__title {
@@ -47,6 +48,7 @@ const props = defineProps({
     margin-right: 10px;
     text-decoration: none;
     color: #333;
-    margin-left: 0;;
+    margin-left: 0;
+    ;
 }
 </style>

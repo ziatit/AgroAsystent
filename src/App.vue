@@ -1,17 +1,18 @@
+<!-- src/App.vue -->
 <template>
-    <naglowek v-if="username" title="Agroasystent" />
-    <naglowek2 v-else />
+    <HeaderLoggedIn v-if="username" title="Agroasystent" />
+    <HeaderLoggedOut v-else />
     <router-view />
-    <st00pka />
+    <FooterComponent />
 </template>
 
 <script setup>
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from './store/users';
-import st00pka from './components/St00pka.vue';
-import naglowek from './components/headers/NagłówekZalogowany.vue';
-import naglowek2 from './components/headers/NagłówekNiez.vue';
+import FooterComponent from './components/headers/FooterComponent.vue';
+import HeaderLoggedIn from './components/headers/HeaderLoggedIn.vue';
+import HeaderLoggedOut from './components/headers/HeaderLoggedOut.vue';
 
 
 const router = useRouter();
@@ -19,6 +20,4 @@ const userStore = useUserStore();
 const username = computed(() => userStore.getLoggedInUser);
 
 </script>
-
-<style scoped>
-</style>
+<style scoped></style>

@@ -3,7 +3,8 @@
         <h1>Hej {{ username }}. Tu są twoje ogrody:</h1>
         <ul class="garden-list">
             <li v-for="garden in gardens" :key="garden.name" class="garden-item">
-                <router-link :to="{ name: 'GardenDetail', params: { id: garden.name, location: garden.location }}" class="garden-link">
+                <router-link :to="{ name: 'GardenDetail', params: { id: garden.name, location: garden.location } }"
+                    class="garden-link">
                     <h2 class="garden-name">{{ garden.name }}</h2>
                 </router-link>
             </li>

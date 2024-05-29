@@ -17,7 +17,7 @@ import { useRouter } from 'vue-router';
 import { supabase } from '../../supabase.js';
 
 let username = ref('');
-let password = ref(''); 
+let password = ref('');
 const router = useRouter();
 
 const submitForm = async (event) => {
