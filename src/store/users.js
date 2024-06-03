@@ -1,17 +1,18 @@
+// src/store/users.js
 import { defineStore } from "pinia";
+import { supabase } from '../supabase'
+
 export const useUserStore = defineStore({
-    id: "user",
+    id: "userStore",
     state: () => ({
-        loggedInUser: null,
+        session: null,
     }),
-    getters: {
-        getLoggedInUser() {
-            return this.loggedInUser;
-        },
-    },
     actions: {
-        setLoggedInUser(user) {
-            this.loggedInUser = user;
+        setSession(session) {
+            this.session = session;
+        },
+        clearSession() {
+            this.session = null;
         },
     },
 });

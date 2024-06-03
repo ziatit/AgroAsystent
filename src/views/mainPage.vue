@@ -1,31 +1,27 @@
-<template>
-    <div>
-        <h1>Witaj w Agro-asystencie!</h1>
-        <button class="login" @click="showSignInForm">Zaloguj się</button>
-        <button class="register" @click="showRegisterForm">Stwórz auth</button>
-        <LoginForm v-if="showLogin" />
-        <RegisterForm v-if="showRegister" />
-    </div>
-</template>
+
 
 <script setup>
 import { ref } from 'vue';
 import LoginForm from '../components/auth/LoginForm.vue';
 import RegisterForm from '../components/auth/RegisterForm.vue';
 
-const showLogin = ref(false)
 const showRegister = ref(false)
 
-function showSignInForm() {
-    showLogin.value = !showLogin.value;
-    console.log(showLogin.value);
-}
-
-function showRegisterForm() {
+function toggleForm() {
     showRegister.value = !showRegister.value;
-    console.log(showRegister.value);
 }
 </script>
+
+<template>
+    <div>
+        <h1>Welcome!</h1>
+        <LoginForm v-if="!showRegister" />
+        <RegisterForm v-if="showRegister" />
+        <button @click="toggleForm">
+            {{ showRegister ? 'Got account? >Login<' : 'No account? >Register<' }}
+        </button>
+    </div>
+</template>
 
 <style scoped>
 .login {
