@@ -13,7 +13,7 @@ export const useAuthStore = defineStore(
         getters:
         {
             session: (state) => state._session,
-            isLoggedIn: (state) => !!state._session,
+            isLoggedIn: (state) => !state._session,
         },
         actions: {
             async signIn(email, password) {
