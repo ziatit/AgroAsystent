@@ -1,6 +1,7 @@
 # Secret
 .env
 .env.alt
+garbage/*
 
 # Logs
 logs

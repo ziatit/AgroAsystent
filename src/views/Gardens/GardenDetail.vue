@@ -28,7 +28,7 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const userStore = useAuthStore();
-const username = ref(userStore.getLoggedInUser);
+const username = ref(userStore.data);
 const plants = ref([]);
 const gardenDets = ref({ name: route.params.id, location: route.params.location });
 const showAddPlant = ref(false)

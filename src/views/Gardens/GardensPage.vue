@@ -1,25 +1,14 @@
-<template>
-    <div class="container">
-        <h1>Hej {{ username }}. Tu są twoje ogrody:</h1>
-        <ul class="garden-list">
-            <li v-for="garden in gardens" :key="garden.name" class="garden-item">
-                <router-link :to="{ name: 'GardenDetail', params: { id: garden.name, location: garden.location } }"
-                    class="garden-link">
-                    <h2 class="garden-name">{{ garden.name }}</h2>
-                </router-link>
-            </li>
-        </ul>
-    </div>
-</template>
-
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useAuthStore } from '../../store/useAuthStore.js';
 import { supabase } from '../../supabase.js';
+import WeatherWidget from '../WeatherWidget.vue';
+import DummyGardens from './DummyGardens.vue';
 
+const hasGardens = computed(() => gardens.value.length > 0);
 const gardens = ref([]);
-const userStore = useAuthStore();
-const username = ref(userStore.getLoggedInUser);
+const authStore = useAuthStore();
+const username = ref(authStore.data.session.user.user_metadata.email);
 onMounted(fetchGardens)
 
 async function fetchGardens() {
@@ -48,6 +37,22 @@ async function fetchGardens() {
     }
 }
 </script>
+
+<template>
+    <div class="container">
+        <h1>Hej {{ username }}. Tu są twoje ogrody:</h1>
+        <WeatherWidget />
+        <ul class="garden-list" v-if="hasGardens">
+            <li v-for="garden in gardens" :key="garden.name" class="garden-item">
+                <router-link :to="{ name: 'GardenDetail', params: { id: garden.name, location: garden.location } }"
+                    class="garden-link">
+                    <h2 class="garden-name">{{ garden.name }}</h2>
+                </router-link>
+            </li>
+        </ul>
+        <DummyGardens v-else />
+    </div>
+</template>
 
 <style scoped>
 .container {

@@ -17,6 +17,8 @@ const authStore = useAuthStore();
                 <button @click="authStore.signOut">Logout</button>
             </div>
             <router-link class="header_nav b" to="/aboutUs">About Us</router-link>
+            <!-- Add this line -->
+            <router-link class="header_nav b" to="/userScreen" style="margin-left: auto;">Home</router-link>
         </nav>
     </header>
 </template>
@@ -68,6 +70,5 @@ button {
 .header__nav b {
     color: rgb(99, 93, 93);
     text-decoration: none;
-
 }
 </style>

@@ -14,9 +14,23 @@ const username = computed(() => userStore.getLoggedInUser);
 </script>
 
 <template>
-    <HeaderComponent/>
-    <router-view />
-    <FooterComponent />
+    <div id="app">
+        <HeaderComponent />
+        <div id="content">
+            <router-view />
+        </div>
+        <FooterComponent />
+    </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#content {
+    flex: 1 0 auto;
+}
+</style>
