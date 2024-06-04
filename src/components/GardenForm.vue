@@ -1,24 +1,3 @@
-<template>
-    <div class="form-container">
-        <h1>{{ title }}</h1>
-        <form @submit.prevent="submitForm">
-            <div class="form-group">
-                <label for="name">Nazwa:</label>
-                <input type="text" v-model="name" id="name" required>
-            </div>
-            <div class="form-group">
-                <label for="location">Lokalizacja:</label>
-                <input type="text" v-model="location" id="location" required>
-            </div>
-            <div class="form-group">
-                <label for="binary">Czy ogródek jest pod dachem?</label>
-                <input type="checkbox" v-model="isUnderRoof" id="binary" name="is_under_roof">
-            </div>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue';
 import { useAuthStore } from '../store/useAuthStore.js';
@@ -60,12 +39,34 @@ const submitForm = async () => {
 };
 </script>
 
+<template>
+    <div class="form-container">
+        <h1>{{ title }}</h1>
+        <form @submit.prevent="submitForm">
+            <div class="form-group">
+                <label for="name">Nazwa:</label>
+                <input type="text" v-model="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Lokalizacja:</label>
+                <input type="text" v-model="location" id="location" required>
+            </div>
+            <div class="form-group">
+                <label for="binary">Czy ogródek jest pod dachem?</label>
+                <input type="checkbox" v-model="isUnderRoof" id="binary" name="is_under_roof">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</template>
+
 <style scoped>
 .form-container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
     padding: 15px;
+    color: #333;
 }
 
 .form-group {

@@ -8,27 +8,30 @@ export const useAuthStore = defineStore(
     {
         id: "authStore",
         state: () => ({
-            _session: null,
+            _data: null,
         }),
         getters:
         {
-            session: (state) => state._session,
-            isLoggedIn: (state) => !state._session,
+            data: (state) => state._data,
+            isLoggedIn: (state) => !state._data,
         },
         actions: {
             async signIn(email, password) {
                 console.log("signing in");
-                const { session, error } = await supabase.auth.signInWithPassword({ email, password });
-                if (error) throw error;
-                this.session = session;
-                console.log("signed in, session:\n", this.session);
+                await supabase.auth.signInWithPassword({ email, password })
+                    .then(({ data, error }) => {
+                        if (error) throw error;
+                        this._data = data;
+                        console.log("signed in, data:\n", this.data);
+                    });
             },
             async signOut() {
                 console.log("signing out");
                 const { error } = await supabase.auth.signOut();
                 if (error) throw error;
-                this.session = null;
-                console.log("signed out, session:\n", this.session);
+                this._data = null;
+                console.log("signed out, data:\n", this._data);
+                // router push needed here
             },
         },
     },

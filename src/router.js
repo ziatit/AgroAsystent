@@ -58,7 +58,7 @@ const router = createRouter({
 // Navigation guard to check authentication
 router.beforeEach((to, from, next) => {
     const authStore = useAuthStore();
-    if (to.name !== "MainPage" && !authStore.session) {
+    if (to.name !== "MainPage" && to.name !== "AboutUs" && !authStore._data) {
         next({ name: "MainPage" });
     } else {
         next();

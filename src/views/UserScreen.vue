@@ -1,13 +1,4 @@
-<template>
-    <h2 class="greeting">Hello, {{ username }}</h2>
-    <router-link to="/GardensPage" class="garden-link">Twoje Ogrody</router-link>
-    <div class="task-list">
-        <button class="create" @click="showcreateForm">Dodaj Ogród</button>
-        <GardenForm v-if="showCreate" class="overlay" @formSubmitted="hideForm" />
-        <p> Kalendarz</p>
-    </div>
-</template>
-
+<!-- src/views/UserScreen.vue -->
 <script setup>
 import GardenForm from '../components/GardenForm.vue';
 import { ref, computed } from 'vue';
@@ -25,6 +16,16 @@ function hideForm() {
     showCreate.value = false;
 };
 </script>
+
+<template>
+    <h2 class="greeting">Hello, {{ username }}</h2>
+    <router-link to="/GardensPage" class="garden-link">Twoje Ogrody</router-link>
+    <div class="task-list">
+        <button class="create" @click="showcreateForm">Dodaj Ogród</button>
+        <GardenForm v-if="showCreate" class="overlay" @formSubmitted="hideForm" />
+        <p class="calendar"> Kalendarz</p>
+    </div>
+</template>
 
 <style scoped>
 body {
@@ -59,6 +60,10 @@ body {
     align-items: center;
     z-index: 1000;
     border-radius: 10px;
+}
+
+.calendar {
+    color: #333;
 }
 
 .content {
