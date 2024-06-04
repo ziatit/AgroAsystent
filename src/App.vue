@@ -2,13 +2,13 @@
 <script setup>
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { useUserStore } from './store/users';
+import { useAuthStore } from './store/useAuthStore';
 import FooterComponent from './components/headers/FooterComponent.vue';
 import HeaderComponent from './components/headers/HeaderComponent.vue';
 
 
 const router = useRouter();
-const userStore = useUserStore();
+const userStore = useAuthStore();
 const username = computed(() => userStore.getLoggedInUser);
 
 </script>

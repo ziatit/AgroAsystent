@@ -21,13 +21,13 @@
 
 <script setup>
 import { ref, onMounted, reactive } from 'vue';
-import { useUserStore } from '../../store/users.js';
+import { useAuthStore } from '../../store/useAuthStore.js';
 import AddPlant from '../../components/AddPlant.vue';
 import { supabase } from '../../supabase.js';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const userStore = useUserStore();
+const userStore = useAuthStore();
 const username = ref(userStore.getLoggedInUser);
 const plants = ref([]);
 const gardenDets = ref({ name: route.params.id, location: route.params.location });

@@ -1,33 +1,20 @@
 <!-- src/components/auth/LoginForm.vue -->
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
+import { useAuthStore } from '../../store/useAuthStore';
 import { useRouter } from 'vue-router';
-import { supabase } from '../../supabase.js';
-import { useUserStore } from '../../store/users.js';
 
-const email = ref("");
-const password = ref("");
+const email = ref('');
+const password = ref('');
+const authStore = useAuthStore();
 const router = useRouter();
-const userStore = useUserStore();
 
-async function login() {
-    console.log("run login()")
-    const { data, error } = await supabase.auth.signInWithPassword({
-        email: email.value,
-        password: password.value
-    })
-    if (error) {
-        console.log("Failed to login:");
-        console.log(error);
-    }
-    else {
-        console.log("Data object returned by Supabase Auth:");
-        console.log(data);
-        const session = await supabase.auth.getSession();
-        console.log("Session object:");
-        console.log(session);
-        userStore.setSession(session);
-        router.push('/UserScreen');
+const login = async () => {
+    try {
+        await authStore.signIn(email.value, password.value);
+        router.push('/userScreen');
+    } catch (error) {
+        alert(error.error_description || error.message);
     }
 }
 </script>
@@ -46,8 +33,6 @@ async function login() {
 
     <div class="buttonContainer">
         <button @click="login"> Login </button>
-        <!-- <button @click="seeUser"> See user </button> -->
-        <!-- <button @click="logout"> Logout </button> -->
     </div>
 </template>
 

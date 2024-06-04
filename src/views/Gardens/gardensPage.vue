@@ -14,11 +14,11 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import { useUserStore } from '../../store/users.js';
+import { useAuthStore } from '../../store/useAuthStore.js';
 import { supabase } from '../../supabase.js';
 
 const gardens = ref([]);
-const userStore = useUserStore();
+const userStore = useAuthStore();
 const username = ref(userStore.getLoggedInUser);
 onMounted(fetchGardens)
 

@@ -2,26 +2,16 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { supabase } from '../../supabase.js';
+import { useAuthStore } from '../../store/useAuthStore.js';
 
-const localUser = ref(null);
+const authStore = useAuthStore();
 
-onMounted(() => {
-    const session = supabase.auth.getSession();
-    if (session) {
-        localUser.value = session.user;
-    }
-});
-
-async function logout() {
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-        console.log(error);
-    }
-    else {
-        console.log("Sign out success")
-        localUser.value = null;
-    }
+const logout = async () => {
+  try {
+    await authStore.signOut();
+  } catch (error) {
+    alert(error.error_description || error.message);
+  }
 }
 </script>
 
@@ -29,11 +19,11 @@ async function logout() {
     <header class="header">
         <h1 class="header__title">Agroasystent</h1>
         <nav class="header__nav">
-            <div class="header_nav a" :class="{ 'no-link': $route.path === '/' }" v-if="!localUser">
+            <div class="header_nav a" :class="{ 'no-link': $route.path === '/' }" v-if="!authStore.session">
                 You are not logged in
                 <router-link v-if="$route.path !== '/'" to="/">- Go to Login</router-link>
             </div>
-            <div class="header_nav a" v-else>Logged in as {{ localUser.email }} | <button
+            <div class="header_nav a" v-else>Logged in with JWT: {{ authStore.session.access_token }} | <button
                     @click="logout">Logout</button></div>
             <router-link class="header_nav b" to="/aboutUs">About Us</router-link>
         </nav>

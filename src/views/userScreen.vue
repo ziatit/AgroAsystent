@@ -11,9 +11,9 @@
 <script setup>
 import GardenForm from '../components/GardenForm.vue';
 import { ref, computed } from 'vue';
-import { useUserStore } from '../store/users';
+import { useAuthStore } from '../store/useAuthStore';
 
-const userStore = useUserStore();
+const userStore = useAuthStore();
 const showCreate = ref(false);
 
 const username = computed(() => userStore.getLoggedInUser);

@@ -9,6 +9,8 @@ import gardenDetail from "./views/Gardens/GardenDetail.vue";
 import NotFound from "./views/NotFound.vue";
 import AboutUs from "./views/AboutUs.vue";
 
+import { useAuthStore } from './store/useAuthStore.js';
+
 const routes = [
     {
         path: "/",
@@ -54,11 +56,13 @@ const router = createRouter({
 });
 
 // Navigation guard to check authentication
-
-// // This one doesn't work - blocks access even after login
-// router.beforeEach((to, from, next) => {
-//     if (to.name !== 'MainPage' && !localStorage.getItem('user')) next({ name: 'MainPage' });
-//     else next();
-// });
+router.beforeEach((to, from, next) => {
+    const authStore = useAuthStore();
+    if (to.name !== "MainPage" && !authStore.session) {
+        next({ name: "MainPage" });
+    } else {
+        next();
+    }
+});
 
 export default router;
